@@ -12,8 +12,8 @@ st.write(
   """
 )
 
-Name_on_order = st.text_input("Name On Smoothie")
-st.write("The name on your smoothie will be", Name_on_order)
+Name = st.text_input("Name On Smoothie")
+st.write("The name on your smoothie will be", Name)
 cnx = st.connection("snowflake")
 session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
@@ -24,7 +24,7 @@ ingredients_List = st.multiselect(
     , my_dataframe
     ,max_selections=5
 )
-if ingredients_List and Name_on_order:
+if ingredients_List and Name:
     
     # st.write(ingredients_List)
     # st.text(ingredients_List)
@@ -42,7 +42,7 @@ if ingredients_List and Name_on_order:
     # st.write(ingredients_string)
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,Name_on_order)
-            values ('""" + ingredients_string + """','"""+Name_on_order+"""')"""
+            values ('""" + ingredients_string + """','"""+Name+"""')"""
     # st.write(my_insert_stmt)
     # st.stop()
     time_to_insert = st.button('Sumbit Order')

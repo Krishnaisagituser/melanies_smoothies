@@ -24,7 +24,7 @@ ingredients_List = st.multiselect(
     , my_dataframe
     ,max_selections=5
 )
-if ingredients_List and Name:
+if ingredients_List:
     
     # st.write(ingredients_List)
     # st.text(ingredients_List)

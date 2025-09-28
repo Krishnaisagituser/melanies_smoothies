@@ -38,8 +38,8 @@ if ingredients_List:
             values ('""" + ingredients_string + """','"""+Name_on_order+"""')"""
     # st.write(my_insert_stmt)
     # st.stop()
-    time_to_insert = st.button('Sumbit Order')
-    if time_to_insert:
-        session.sql(my_insert_stmt).collect()
-        st.success(f'Your Smoothie is ordered!', icon="✅")
+time_to_insert = st.button('Sumbit Order')
+if time_to_insert:
+    session.sql(my_insert_stmt).collect()
+    st.success(f'Your Smoothie is ordered!', icon="✅")
 
